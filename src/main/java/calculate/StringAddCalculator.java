@@ -2,22 +2,41 @@ package calculate;
 
 public class StringAddCalculator {
 
-    public static int splitAndSum(String param) {
-        if (param == null || param.isEmpty()) {
+    public static int splitAndSum(String text) {
+        if (isBlank(text)) {
             return 0;
         }
-        if (param.length() == 1) {
-            return 1;
-        }
-        if (param.contains(",")) {
-            String[] splitParam = param.split(",");
-            int sum = 0;
-            for (String splitData : splitParam) {
-                sum += Integer.parseInt(splitData);
-            }
-            return sum;
+
+        return add(toInts(split(text)));
+    }
+
+    private static String[] split(String text) {
+        String[] values = text.split(",");
+        return values;
+    }
+
+    private static int add(int[] numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
         }
 
-        return Integer.parseInt(param);
+        return sum;
+    }
+
+    private static int[] toInts(String[] values) {
+        int[] intArray = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            intArray[i] = Integer.parseInt(values[i]);
+        }
+
+        return intArray;
+    }
+
+    private static boolean isBlank(String text) {
+        if (text == null || text.isEmpty()) {
+            return true;
+        }
+        return false;
     }
 }
