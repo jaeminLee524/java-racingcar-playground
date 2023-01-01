@@ -9,31 +9,31 @@ public class Car {
     public static final int MAX_BOUND = 9;
     public static final int FORWARD_NUM = 4;
     private final Name name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
         this.name = new Name(name);
-        this.position = 0;
+        this.position = new Position(0);
     }
 
     public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.movable()) {
-            position += 1;
+            position.plusDistinct();
         }
     }
 
     public void move(int randomNum) {
         if (randomNum >= FORWARD_NUM) {
-            position += 1;
+            position.plusDistinct();
         }
     }
 
     public void move() {
         if (getRandomNum() >= FORWARD_NUM) {
-            position += 1;
+            position.plusDistinct();
         }
     }
 
@@ -64,6 +64,10 @@ public class Car {
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
+    }
+
+    public Name getName() {
+        return name;
     }
 }
