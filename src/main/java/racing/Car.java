@@ -12,11 +12,15 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
+        this(name, 0);
+    }
+
+    public Car(String name, int position) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다.");
         }
         this.name = new Name(name);
-        this.position = new Position(0);
+        this.position = new Position(position);
     }
 
     public void move(MoveStrategy moveStrategy) {

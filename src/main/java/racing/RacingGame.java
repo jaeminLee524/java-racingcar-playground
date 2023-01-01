@@ -8,9 +8,9 @@ public class RacingGame {
     List<Car> carList;
     private int tryNo;
 
-    public RacingGame(String carNames, int gameTryTime) {
+    public RacingGame(String carNames, int tryNo) {
         this.carList = initCarList(carNames);
-        this.tryNo = gameTryTime;
+        this.tryNo = tryNo;
     }
 
     private List<Car> initCarList(String carNames) {
@@ -36,6 +36,6 @@ public class RacingGame {
     }
 
     public void printCarsDistinct() {
-        
+
     }
 }
