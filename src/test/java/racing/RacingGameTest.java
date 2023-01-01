@@ -24,5 +24,6 @@ public class RacingGameTest {
         Cars cars = new Cars(Arrays.asList(jaem, jaen, hwan));
         Assertions.assertThat(cars.findWinner()).containsExactly(jaem, jaen);
         Assertions.assertThat(cars.findWinner().size()).isEqualTo(2);
+
     }
 }
