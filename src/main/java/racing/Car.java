@@ -19,6 +19,12 @@ public class Car {
         this.position = 0;
     }
 
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.movable()) {
+            position += 1;
+        }
+    }
+
     public void move(int randomNum) {
         if (randomNum >= FORWARD_NUM) {
             position += 1;

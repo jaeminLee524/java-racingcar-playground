@@ -75,4 +75,22 @@ public class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("[문제상황 1 - 해결방법 3 인터페이스 이용] 이동")
+    void 이동3() {
+        Car car = new Car("jaem");
+        car.move(() -> true);
+
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("[문제상황 1 - 해결방법 3 인터페이스 이용] 정지")
+    void 정지3() {
+        Car car = new Car("jaem");
+        car.move(() -> false);
+
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
 }
