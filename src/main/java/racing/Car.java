@@ -63,6 +63,20 @@ public class Car {
         return carList;
     }
 
+    public boolean maxPosition(Position maxPosition) {
+        return position.isSameOrBetter(maxPosition);
+    }
+
+    public void moveByTryNo(int tryNo) {
+        for (int i = 0; i < tryNo; i++) {
+            this.move();
+        }
+    }
+
+    public Position getMaxPosition() {
+        return position.getCurrentPosition();
+    }
+
     public String printName() {
         return name.printName();
     }

@@ -5,11 +5,11 @@ import java.util.List;
 
 public class RacingGame {
 
-    List<Car> carList;
+    private Cars cars;
     private int tryNo;
 
     public RacingGame(String carNames, int tryNo) {
-        this.carList = initCarList(carNames);
+        this.cars = new Cars(initCarList(carNames));
         this.tryNo = tryNo;
     }
 
@@ -19,20 +19,17 @@ public class RacingGame {
         }
 
         String[] splitCarName = carNames.split(",");
-        List<Car> cars = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         for (String carName : splitCarName) {
-            cars.add(new Car(carName));
+            carList.add(new Car(carName));
         }
 
-        return cars;
+        return carList;
     }
 
-    public void racing() {
-        for (int i = 0; i < tryNo; i++) {
-            for (Car car : carList) {
-                car.move();
-            }
-        }
+    public List<Car> racing() {
+        cars.tryNoOfMove(tryNo);
+        return cars.findWinner();
     }
 
     public void printCarsDistinct() {

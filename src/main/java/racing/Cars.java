@@ -12,28 +12,33 @@ public class Cars {
     }
 
     public List<Car> findWinner() {
-        int maxPosition = getMaxPosition();
-
-        return getWinnerCarList(maxPosition);
+        return getWinnerCarList(getMaxPosition());
     }
 
-    private List<Car> getWinnerCarList(int maxPosition) {
+    private List<Car> getWinnerCarList(Position maxPosition) {
         List<Car> winnerCarList = new ArrayList<>();
         for (Car car : carList) {
-            if (car.getPosition() == maxPosition) {
+            if (car.maxPosition(maxPosition)) {
                 winnerCarList.add(car);
             }
         }
         return winnerCarList;
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
+    private Position getMaxPosition() {
+        Position maxPosition = new Position(0);
         for (Car car : carList) {
-            if (maxPosition < car.getPosition()) {
-                maxPosition = car.getPosition();
+            if (car.maxPosition(maxPosition)) {
+                maxPosition = car.getMaxPosition();
             }
         }
+
         return maxPosition;
+    }
+
+    public void tryNoOfMove(int tryNo) {
+        for (Car car : carList) {
+            car.moveByTryNo(tryNo);
+        }
     }
 }
